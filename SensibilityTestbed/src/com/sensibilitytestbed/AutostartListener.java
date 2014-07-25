@@ -17,6 +17,9 @@ public class AutostartListener extends BroadcastReceiver {
 	@Override
 	public void onReceive(final Context context, Intent intent) {
 		// Executed on successful booting
+		Intent i = new Intent(context, ScriptActivity.class);
+	    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    context.startActivity(i);
 		new AsyncStart(context).execute();
 	}
 	public class AsyncStart extends AsyncTask<Void, Integer, String> {
@@ -27,11 +30,10 @@ public class AutostartListener extends BroadcastReceiver {
 	    }
 	    @Override
 	    protected String doInBackground(Void... params) {
-	    	while (true) {		
-	    		boolean isInstalled = (new File(ScriptActivity.getSeattlePath()+"seattle_repy/","nmmain.py")).exists();
+	    	while (true) {
 	    		SharedPreferences settings = context.getSharedPreferences(ScriptActivity.SEATTLE_PREFERENCES, Context.MODE_WORLD_WRITEABLE);
 	    		// Check if the app is installed and is to be run on startup
-	    		if(isInstalled&&settings.getBoolean(ScriptActivity.AUTOSTART_ON_BOOT,true)) {
+	    		if(settings.getBoolean(ScriptActivity.AUTOSTART_ON_BOOT,true)) {
 			    	  Intent serviceIntent = new Intent();
 			    	  serviceIntent.setAction("com.sensibilitytestbed.ScriptService");
 			    	  ScriptService.serviceInitiatedByUser = true;
@@ -42,10 +44,7 @@ public class AutostartListener extends BroadcastReceiver {
 				}
 				else {
 					try {
-						if(!isInstalled)
-							Log.i(Common.LOG_TAG, "Sensibility Testbed not properly installed -- Autostart attempt failed");
-						else
-							Log.i(Common.LOG_TAG, "Autostart on boot set to false");
+						Log.i(Common.LOG_TAG, "Autostart on boot set to false");
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {}
 				}	

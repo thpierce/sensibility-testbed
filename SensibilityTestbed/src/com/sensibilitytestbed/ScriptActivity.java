@@ -783,6 +783,8 @@ public class ScriptActivity extends Activity {
 		settings = getSharedPreferences(SEATTLE_PREFERENCES,
 				MODE_WORLD_WRITEABLE);
 		seattleInstallDirectory = getExternalFilesDir(null);
+		// TODO: Use isInstalled
+		boolean isInstalled = (new File(ScriptActivity.getSeattlePath()+"seattle_repy/","nmmain.py")).exists();
 		Log.v(Common.LOG_TAG, "Application files will be placed in: " +
 			seattleInstallDirectory.getAbsolutePath());
 

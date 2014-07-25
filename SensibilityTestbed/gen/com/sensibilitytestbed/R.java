@@ -13,14 +13,15 @@ public final class R {
     public static final class drawable {
         public static final int __icon=0x7f020000;
         public static final int __script_logo_48=0x7f020001;
-        public static final int ic_menu_back=0x7f020002;
-        public static final int ic_menu_delete=0x7f020003;
-        public static final int ic_menu_help=0x7f020004;
-        public static final int ic_menu_refresh=0x7f020005;
-        public static final int ic_menu_view=0x7f020006;
-        public static final int seattlelogo=0x7f020007;
-        public static final int soa_320x316=0x7f020008;
-        public static final int stat_sys_warning=0x7f020009;
+        public static final int ic_launcher=0x7f020002;
+        public static final int ic_menu_back=0x7f020003;
+        public static final int ic_menu_delete=0x7f020004;
+        public static final int ic_menu_help=0x7f020005;
+        public static final int ic_menu_refresh=0x7f020006;
+        public static final int ic_menu_view=0x7f020007;
+        public static final int seattlelogo=0x7f020008;
+        public static final int soa_320x316=0x7f020009;
+        public static final int stat_sys_warning=0x7f02000a;
     }
     public static final class id {
         public static final int aboutLogoView=0x7f070001;
